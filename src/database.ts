@@ -9,6 +9,6 @@ export const DBoptions: ConnectionOptions = {
   username: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASS,
   database: process.env.DATABASE_NAME,
-  entities: ["src/models/*.ts"],
+  entities: ["src/models/*.js"],
   synchronize: true
 };
