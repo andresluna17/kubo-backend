@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import jwt, { Secret } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { getManager } from "typeorm";
 import { User } from "../../models/user.model";
