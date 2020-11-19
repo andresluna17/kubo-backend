@@ -30,7 +30,15 @@ export default class PeliculaController {
 
   async createPelicula(req: Request, res: Response) {
     try {
-      const { categorias, imagen, titulo, duracion, trailer, estreno } = req.body;
+      const {
+        categorias,
+        imagen,
+        titulo,
+        duracion,
+        trailer,
+        estreno,
+        descripcion
+      } = req.body;
       let options = await categorias.map((element: number) => {
         return {
           id: element
@@ -46,6 +54,7 @@ export default class PeliculaController {
         duracion,
         trailer,
         estreno,
+        descripcion,
         categorias: categoriasDB!
       };
       let newPelicula = getManager().getRepository(Pelicula).create(data);
@@ -59,7 +68,15 @@ export default class PeliculaController {
 
   async updatePelicula(req: Request, res: Response) {
     try {
-      const { categorias, imagen, titulo, duracion, trailer, estreno } = req.body;
+      const {
+        categorias,
+        imagen,
+        titulo,
+        duracion,
+        trailer,
+        estreno,
+        descripcion
+      } = req.body;
       const { id } = req.params;
       let options = await categorias.map((element: number) => {
         return {
@@ -76,6 +93,7 @@ export default class PeliculaController {
       peliculaDB!.titulo = titulo;
       peliculaDB!.duracion = duracion;
       peliculaDB!.trailer = trailer;
+      peliculaDB!.descripcion = descripcion;
       peliculaDB!.estreno = estreno;
       const PeliculaUpdate = await getManager().getRepository(Pelicula).save(peliculaDB!);
       res.status(200).json({ ok: true, pelicula: PeliculaUpdate });
